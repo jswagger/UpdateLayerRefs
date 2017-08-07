@@ -1,0 +1,14 @@
+{
+  "in_mxd": "C:\\LscRepos\\LSC.GisPortal\\LSC.GISPortal.Web.UI\\AppsJs\\v3\\app_mxds\\CONS\\Cons_DigTOC.mxd",
+  
+  "out_mxd": "C:\\Users\\jswagger\\ExampleUpdated.mxd",
+  
+  "out_db": "C:\\SdeConnections\\lscgistestLSC.sde",
+  
+  "out_db_type": "SDE",
+  
+  "in_prefix": "SANDBOX.LSCGISTEST_CREATOR",
+  
+  "out_prefix": "LSC_GISTEST.LSCGISTEST_CREATOR"
+
+}
