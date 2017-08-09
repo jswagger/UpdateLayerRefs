@@ -1,11 +1,34 @@
 #
 #
 #
+# Name: Update Layer References
 #
+# Purpose: Mass update layer references from one database to another. This saves the hassle of manually going through
+# each layer and revising its path. Use a JSON file to configure to a new database, as well as save a new copy of your
+# MXD.
 #
+# Author: jswagger
 #
+# Created: 07/31/2017
 #
+# Example config:
+# {
+#     "in_mxd": "C:\\Users\\jswagger\\Example.mxd",
 #
+#     "out_mxd": "C:\\Users\\jswagger\\ExampleUpdated.mxd",
+#
+#     "out_db": "C:\\SdeConnections\\gistest.sde",
+#
+#     "out_db_type": "SDE_WORKSPACE",
+#
+#     "in_prefix": "SANDBOX.GISTEST_CREATOR",
+#
+#     "out_prefix": "OUT_GISTEST.LSCGISTEST_CREATOR"
+#
+# }
+
+
+
 
 import arcpy
 import re
