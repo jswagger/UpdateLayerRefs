@@ -5,7 +5,7 @@
   
   "out_db": "C:\\SdeConnections\\lscgistestLSC.sde",
   
-  "out_db_type": "SDE",
+  "out_db_type": "SDE_WORKSPACE",
   
   "in_prefix": "SANDBOX.LSCGISTEST_CREATOR",
   

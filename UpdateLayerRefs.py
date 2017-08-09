@@ -25,9 +25,10 @@ def update_mxd(in_mxd, out_mxd, out_db, out_db_type, in_prefix, out_prefix):
         lyr.replaceDataSource(out_db, out_db_type, out_fc_sanitized, False)
     in_mxd.saveACopy(out_mxd)
 
+
 def main():
     config_file = read_config_file()
-    in_mxd = config_file.get("in_mxd").encode('utf-8')
+    in_mxd = arcpy.mapping.MapDocument(config_file.get("in_mxd").encode('utf-8'))
     out_mxd = config_file.get("out_mxd").encode('utf-8')
     out_db = config_file.get("out_db").encode('utf-8')
     out_db_type = config_file.get("out_db_type").encode('utf-8')
