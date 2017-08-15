@@ -3,7 +3,10 @@ Mass update layer references from one database to another in a given MXD. This s
 
 To overwrite an existing MXD, rather than saving a new one, simply set the "out mxd" property to null.
 
+Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma.
+
 Future improvements planned:
-Allow users to pass in multiple mxds as an tuple,
+
 Support unknown input prefixes,
+Support file geodatabase connections,
 Create an ArcToolbox with an easy-to-use tool within ArcMap
