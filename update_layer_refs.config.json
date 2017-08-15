@@ -1,5 +1,7 @@
 {
-  "in_mxd": "C:\\Users\\jswagger\\Example.mxd",
+  "workspace_folder": "C:\\Users\\jswagger\\",
+  
+  "in_mxds": ["Example.mxd", "Example2.mxd", "Example3.mxd"],
   
   "out_mxd": null,
   
