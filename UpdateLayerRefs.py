@@ -1,11 +1,8 @@
-#
-#
-#
 # Name: Update Layer References
 #
-# Purpose: Mass update layer references from one database to another. This saves the hassle of manually going through
-# each layer and revising its path. Use a JSON file to configure to a new database, as well as save a new copy of your
-# MXD.
+# Mass update layer references from one database to another in a given set of MXDs. This saves the hassle of manually
+# going through each layer in each MXD and revising or fixing its path. Use the JSON file template to configure.
+# Then run in Powershell or another command line.
 #
 # Author: jswagger
 #
@@ -13,9 +10,11 @@
 #
 # Example config:
 # {
-#     "in_mxd": "C:\\Users\\jswagger\\Example.mxd",
+#     "workspace_folder": "C:\\Users\\jswagger\\",
 #
-#     "out_mxd": "C:\\Users\\jswagger\\ExampleUpdated.mxd",
+#     "in_mxds": ["Example.mxd", "Example2.mxd", "Example3.mxd"],
+#
+#     "out_mxd": null,
 #
 #     "out_db": "C:\\SdeConnections\\gistest.sde",
 #
@@ -76,7 +75,6 @@ def main():
     out_prefix = config_file.get("out_prefix").encode('utf-8')
     workspace = config_file.get("workspace_folder")
     process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, in_prefix, out_prefix)
-
 
 
 main()
