@@ -6,10 +6,10 @@ Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma
 
 Future improvements planned:
 
-Support unknown input prefixes
+  Support unknown input prefixes
 
-Support file geodatabase connections
+  Support file geodatabase connections
 
-Support multiple output connections
+  Support multiple output connections
 
-Create an ArcToolbox with an easy-to-use tool within ArcMap
+  Create an ArcToolbox with an easy-to-use tool within ArcMap
