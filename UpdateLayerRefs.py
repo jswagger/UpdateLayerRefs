@@ -40,14 +40,15 @@ def read_config_file():
         return d
 
 
-def update_mxd(focus_mxd, out_mxd, out_db, out_db_type, in_prefix, out_prefix):
+def update_mxd(focus_mxd, out_mxd, out_db, out_db_type, in_prefix, out_prefix, mxd_order):
     for lyr in arcpy.mapping.ListLayers(focus_mxd):
         in_fc = lyr.datasetName
+#        in_prefix = (lyr.databaseSource)
         out_fc_sanitized = re.sub(in_prefix, out_prefix, in_fc)
         lyr.replaceDataSource(out_db, out_db_type, out_fc_sanitized, False)
     if out_mxd:
-        focus_mxd.saveACopy(out_mxd)
-        print "New MXD is ready"
+        focus_mxd.saveACopy(out_mxd[mxd_order])
+        print "MXD", focus_mxd.filePath, "saved as", out_mxd[mxd_order]
     else:
         focus_mxd.save()
         print "MXD ", focus_mxd.filePath, " has been updated"
@@ -55,14 +56,17 @@ def update_mxd(focus_mxd, out_mxd, out_db, out_db_type, in_prefix, out_prefix):
 
 def set_out_mxds(config_out_mxd):
     if config_out_mxd:
-        config_out_mxd.encode('utf-8')
-    return config_out_mxd
+        processed_out_mxds = []
+        for item in config_out_mxd:
+            processed_out_mxds.append(item.encode('utf-8'))
+    return processed_out_mxds
 
 
 def process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, in_prefix, out_prefix):
     for item in in_mxds:
         focus_mxd = arcpy.mapping.MapDocument((workspace + item).encode('utf-8'))
-        update_mxd(focus_mxd, out_mxd, out_db, out_db_type, in_prefix, out_prefix)
+        mxd_order = in_mxds.index(item)
+        update_mxd(focus_mxd, out_mxd, out_db, out_db_type, in_prefix, out_prefix, mxd_order)
 
 
 def main():

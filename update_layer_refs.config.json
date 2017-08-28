@@ -3,7 +3,7 @@
   
   "in_mxds": ["Example.mxd", "Example2.mxd", "Example3.mxd"],
   
-  "out_mxd": null,
+  "out_mxd": ["ExampleBob.mxd", "Example2Bob.mxd", "Example3Bob.mxd"],
   
   "out_db": "C:\\SdeConnections\\lscgistestLSC.sde",
   
