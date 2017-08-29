@@ -30,7 +30,7 @@ Instructions:
 
 2. Run in powershell or command prompt: 
 
-python UpdateLayerRefs.py --config "update_layer_refs.config.json"
+       python UpdateLayerRefs.py --config "update_layer_refs.config.json"
 
 
 
