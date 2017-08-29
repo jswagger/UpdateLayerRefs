@@ -4,6 +4,9 @@ Mass update layer references from one database to another in a given set of MXDs
 To overwrite an existing MXD, rather than saving a new one, simply set the "out mxd" property to null.
 Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma.
 
+
+Instructions:
+
 1. Fill out JSON config file:
 
 
@@ -32,12 +35,12 @@ python UpdateLayerRefs.py --config "update_layer_refs.config.json"
 
 
 
-Future improvements planned:
+  Future improvements planned:
 
-  Support unknown input prefixes
+    Support unknown input prefixes
 
-  Support file geodatabase connections
+    Support file geodatabase connections
 
-  Support multiple output connections
+    Support multiple output connections
 
-  Create an ArcToolbox with an easy-to-use tool within ArcMap
+    Create an ArcToolbox with an easy-to-use tool within ArcMap
