@@ -5,7 +5,7 @@ To overwrite an existing MXD, rather than saving a new one, simply set the "out 
 Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma.
 
 
-Instructions:
+## Instructions:
 
 1. Fill out JSON config file:
 
@@ -34,7 +34,7 @@ Instructions:
 
 
 
-  Future improvements planned:
+  ## Future improvements planned:
 
     Support unknown input prefixes
 
