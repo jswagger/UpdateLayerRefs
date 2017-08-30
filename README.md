@@ -7,7 +7,7 @@ Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma
 
 ## Instructions:
 
-1. Fill out JSON config file:
+#### 1. Fill out JSON config file:
 
 
     in_mxds: load up the names of your input MXD's
@@ -28,7 +28,7 @@ Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma
     out_prefix: Same type as in_prefix, but will be the new target out database connection
 
 
-2. Run in powershell or command prompt: 
+#### 2. Run in powershell or command prompt: 
 
        python UpdateLayerRefs.py --config "update_layer_refs.config.json"
 
