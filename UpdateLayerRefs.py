@@ -75,7 +75,7 @@ def get_out_db_type(out_db):
         db_type = "SDE_WORKSPACE"
     if out_db.endswith('.gdb'):
         db_type = "FGDB_WORKSPACE"
-    else:
+    if db_type is None:
         print "Database type not supported"
     return db_type
 
