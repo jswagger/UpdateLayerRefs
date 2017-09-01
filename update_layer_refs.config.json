@@ -9,8 +9,6 @@
   
   "out_db_type": "SDE_WORKSPACE",
   
-  "in_prefix": "SANDBOX.LSCGISTEST_CREATOR",
-  
-  "out_prefix": "LSC_GISTEST.LSCGISTEST_CREATOR"
+  "out_prefix": "LSC_GISTEST.LSCGISTEST_CREATOR."
 
 }
