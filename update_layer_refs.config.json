@@ -7,8 +7,5 @@
   
   "out_db": "C:\\SdeConnections\\lscgistestLSC.sde",
   
-  "out_db_type": "SDE_WORKSPACE",
-  
   "out_prefix": "LSC_GISTEST.LSCGISTEST_CREATOR."
-
 }
