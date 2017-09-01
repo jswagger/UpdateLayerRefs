@@ -21,11 +21,8 @@ Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma
 
     out_db_type: Just "SDE_WORKSPACE" for now. File geodatabase will be supported soon.
 
-
-    in_prefix: This is the prefix containing the connection name preceding the actual feature class name. (i.e. feature class "Road" would be (SDE Connection).Road  Note: This will be phased out on the next build.
-
-
-    out_prefix: Same type as in_prefix, but will be the new target out database connection
+    
+    out_prefix: Includes database name and username used in SDE connection (Look at layer sources in an mxd referencing SDE for an example
 
 
 #### 2. Run in powershell or command prompt: 
@@ -35,8 +32,6 @@ Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma
 
 
   ## Future improvements planned:
-
-    Support unknown input prefixes
 
     Support file geodatabase connections
 
