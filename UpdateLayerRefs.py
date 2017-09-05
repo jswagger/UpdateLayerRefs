@@ -20,8 +20,6 @@
 #
 #     "out_db_type": "SDE_WORKSPACE",
 #
-#     "in_prefix": "SANDBOX.GISTEST_CREATOR",
-#
 #     "out_prefix": "OUT_GISTEST.LSCGISTEST_CREATOR"
 #
 # }
@@ -43,7 +41,6 @@ def read_config_file():
 def update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix, mxd_order):
     for lyr in arcpy.mapping.ListLayers(focus_mxd):
         in_fc = lyr.datasetName
-#
         in_prefix_processed = lyr.datasetName.replace(lyr.name, "")
         out_fc_sanitized = re.sub(in_prefix_processed, out_prefix, in_fc)
         lyr.replaceDataSource(out_db, out_db_type, out_fc_sanitized, False)
