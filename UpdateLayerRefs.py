@@ -14,14 +14,11 @@
 #
 #     "in_mxds": ["Example.mxd", "Example2.mxd", "Example3.mxd"],
 #
-#     "out_mxd": null,
+#     "out_mxds": null,
 #
 #     "out_db": "C:\\SdeConnections\\gistest.sde",
 #
-#     "out_db_type": "SDE_WORKSPACE",
-#
-#     "out_prefix": "OUT_GISTEST.LSCGISTEST_CREATOR"
-#
+#     "out_prefix": "OUT_GISTEST.GISTEST_CREATOR."
 # }
 
 
@@ -34,8 +31,7 @@ import json
 
 def read_config_file():
     with open('update_layer_refs.config.json') as json_data:
-        d = json.load(json_data)
-        return d
+        return json.load(json_data)
 
 
 def update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix, mxd_order):
@@ -67,15 +63,23 @@ def process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, out_prefix
         update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix, mxd_order)
 
 
+def get_out_db_type(out_db):
+    if out_db.endswith('.sde'):
+        return "SDE_WORKSPACE"
+    if out_db.endswith('.gdb'):
+        return "FILEGDB_WORKSPACE"
+    else:
+        print "Database type not supported"
+
+
 def main():
     config_file = read_config_file()
     in_mxds = config_file.get("in_mxds")
-    out_mxd = set_out_mxds(config_file.get("out_mxd"))
+    out_mxd = set_out_mxds(config_file.get("out_mxds"))
     out_db = config_file.get("out_db").encode('utf-8')
-    out_db_type = config_file.get("out_db_type").encode('utf-8')
+    out_db_type = get_out_db_type(out_db)
     out_prefix = config_file.get("out_prefix").encode('utf-8')
     workspace = config_file.get("workspace_folder")
-    arcpy.env.workspace = out_db
     process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, out_prefix)
 
 

@@ -3,12 +3,9 @@
   
   "in_mxds": ["Example.mxd", "Example2.mxd", "Example3.mxd"],
   
-  "out_mxd": ["ExampleBob.mxd", "Example2Bob.mxd", "Example3Bob.mxd"],
+  "out_mxds": ["ExampleBob.mxd", "Example2Bob.mxd", "Example3Bob.mxd"],
   
-  "out_db": "C:\\SdeConnections\\lscgistestLSC.sde",
+  "out_db": "C:\\Users\\jswagger\\Desktop\\Atemp\\ScratchTest.gdb",
   
-  "out_db_type": "SDE_WORKSPACE",
-  
-  "out_prefix": "LSC_GISTEST.LSCGISTEST_CREATOR."
-
+  "out_prefix": ""
 }
