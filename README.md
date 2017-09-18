@@ -18,10 +18,7 @@ Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma
 
     out_db: The full path to the SDE connection file.
 
-
-    out_db_type: Just "SDE_WORKSPACE" for now. File geodatabase will be supported soon.
-
-    
+       
     out_prefix: Includes database name and username used in SDE connection (Look at layer sources in an mxd referencing SDE for an example
 
 
@@ -33,8 +30,8 @@ Load up multiple MXDs to update in the "in mxds" parameter, separated by a comma
 
   ## Future improvements planned:
 
-    Support file geodatabase connections
-
     Support multiple output connections
+    
+    Support FGDB to SDE
 
     Create an ArcToolbox with an easy-to-use tool within ArcMap
