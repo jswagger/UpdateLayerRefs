@@ -14,13 +14,9 @@
 #
 #     "in_mxds": ["Example.mxd", "Example2.mxd", "Example3.mxd"],
 #
-#     "out_mxd": null,
+#     "out_mxds": null,
 #
 #     "out_db": "C:\\SdeConnections\\gistest.sde",
-#
-#     "out_db_type": "SDE_WORKSPACE",
-#
-#     "in_prefix": "SANDBOX.GISTEST_CREATOR",
 #
 #     "out_prefix": "OUT_GISTEST.LSCGISTEST_CREATOR"
 #
@@ -36,14 +32,12 @@ import json
 
 def read_config_file():
     with open('update_layer_refs.config.json') as json_data:
-        d = json.load(json_data)
-        return d
+        return json.load(json_data)
 
 
 def update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix, mxd_order):
     for lyr in arcpy.mapping.ListLayers(focus_mxd):
         in_fc = lyr.datasetName
-#
         in_prefix_processed = lyr.datasetName.replace(lyr.name, "")
         out_fc_sanitized = re.sub(in_prefix_processed, out_prefix, in_fc)
         lyr.replaceDataSource(out_db, out_db_type, out_fc_sanitized, False)
@@ -72,18 +66,17 @@ def process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, out_prefix
 
 def get_out_db_type(out_db):
     if out_db.endswith('.sde'):
-        db_type = "SDE_WORKSPACE"
+        return "SDE_WORKSPACE"
     if out_db.endswith('.gdb'):
-        db_type = "FILEGDB_WORKSPACE"
-    if db_type is None:
+        return "FILEGDB_WORKSPACE"
+    else:
         print "Database type not supported"
-    return db_type
 
 
 def main():
     config_file = read_config_file()
     in_mxds = config_file.get("in_mxds")
-    out_mxd = set_out_mxds(config_file.get("out_mxd"))
+    out_mxd = set_out_mxds(config_file.get("out_mxds"))
     out_db = config_file.get("out_db").encode('utf-8')
     out_db_type = get_out_db_type(out_db)
     out_prefix = config_file.get("out_prefix").encode('utf-8')
