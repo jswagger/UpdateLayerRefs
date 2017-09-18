@@ -18,8 +18,7 @@
 #
 #     "out_db": "C:\\SdeConnections\\gistest.sde",
 #
-#     "out_prefix": "OUT_GISTEST.LSCGISTEST_CREATOR"
-#
+#     "out_prefix": "OUT_GISTEST.GISTEST_CREATOR."
 # }
 
 
