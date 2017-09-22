@@ -37,7 +37,7 @@ def read_config_file():
 def update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix, mxd_order):
     for lyr in arcpy.mapping.ListLayers(focus_mxd):
         in_fc = lyr.datasetName
-        in_prefix_processed = lyr.datasetName.replace(lyr.name, "")
+        in_prefix_processed = lyr.datasetName.rsplit('.', 1)[0] + '.'
         out_fc_sanitized = re.sub(in_prefix_processed, out_prefix, in_fc)
         lyr.replaceDataSource(out_db, out_db_type, out_fc_sanitized, False)
     if out_mxd:
