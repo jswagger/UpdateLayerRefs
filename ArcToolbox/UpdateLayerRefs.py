@@ -22,16 +22,8 @@
 # }
 
 
-
-
 import arcpy
 import re
-import json
-
-
-def read_config_file():
-    with open('update_layer_refs.config.json') as json_data:
-        return json.load(json_data)
 
 
 def update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix, mxd_order):
@@ -73,13 +65,12 @@ def get_out_db_type(out_db):
 
 
 def main():
-    config_file = read_config_file()
-    in_mxds = config_file.get("in_mxds")
-    out_mxd = set_out_mxds(config_file.get("out_mxds"))
-    out_db = config_file.get("out_db").encode('utf-8')
+    in_mxds = arcpy.GetParameterAsText(0)
+    out_mxd = arcpy.GetParameterAsText(1)
+    out_db = arcpy.GetParameterAsText(2).encode('utf-8')
     out_db_type = get_out_db_type(out_db)
-    out_prefix = config_file.get("out_prefix").encode('utf-8')
-    workspace = config_file.get("workspace_folder")
+    out_prefix = arcpy.GetParameterAsText(3).encode('utf-8')
+    workspace = arcpy.GetParameterAsText(4)
     process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, out_prefix)
 
 
