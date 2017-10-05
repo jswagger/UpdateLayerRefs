@@ -26,33 +26,24 @@ import arcpy
 import re
 
 
-def update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix, mxd_order):
+def update_mxd(focus_mxd, out_suffix, out_db, out_db_type, out_prefix):
     for lyr in arcpy.mapping.ListLayers(focus_mxd):
         in_fc = lyr.datasetName
         in_prefix_processed = lyr.datasetName.rsplit('.', 1)[0] + '.'
         out_fc_sanitized = re.sub(in_prefix_processed, out_prefix, in_fc)
         lyr.replaceDataSource(out_db, out_db_type, out_fc_sanitized, False)
-    if out_mxd:
-        focus_mxd.saveACopy(out_mxd[mxd_order])
-        print "MXD", focus_mxd.filePath, "saved as", out_mxd[mxd_order]
+    if out_suffix:
+        focus_mxd.saveACopy(focus_mxd.title + out_suffix)
+        print "MXD", focus_mxd.filePath, "saved as", out_suffix
     else:
         focus_mxd.save()
         print "MXD ", focus_mxd.filePath, " has been updated"
 
 
-def set_out_mxds(config_out_mxd):
-    if config_out_mxd:
-        processed_out_mxds = []
-        for item in config_out_mxd:
-            processed_out_mxds.append(item.encode('utf-8'))
-    return processed_out_mxds
-
-
 def process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, out_prefix):
     for item in in_mxds:
         focus_mxd = arcpy.mapping.MapDocument((workspace + item).encode('utf-8'))
-        mxd_order = in_mxds.index(item)
-        update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix, mxd_order)
+        update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix)
 
 
 def get_out_db_type(out_db):
@@ -66,12 +57,12 @@ def get_out_db_type(out_db):
 
 def main():
     in_mxds = arcpy.GetParameterAsText(0)
-    out_mxd = arcpy.GetParameterAsText(1)
+    out_suffix = arcpy.GetParameterAsText(1)
     out_db = arcpy.GetParameterAsText(2).encode('utf-8')
     out_db_type = get_out_db_type(out_db)
     out_prefix = arcpy.GetParameterAsText(3).encode('utf-8')
     workspace = arcpy.GetParameterAsText(4)
-    process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, out_prefix)
+    process_in_mxds(in_mxds, workspace, out_suffix, out_db, out_db_type, out_prefix)
 
 
 main()
