@@ -104,18 +104,23 @@ class UpdateLayerRefs(object):
 
         def process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, out_prefix):
             for item in in_mxds:
-                focus_mxd = arcpy.mapping.MapDocument((workspace + item).encode('utf-8'))
+                arcpy.AddMessage("Made it to item")
+                arcpy.AddMessage(item)
+                focus_mxd = arcpy.mapping.MapDocument(item)
                 mxd_order = in_mxds.index(item)
                 update_mxd(focus_mxd, out_mxd, out_db, out_db_type, out_prefix, mxd_order)
 
-        in_mxds = parameters[0].valueAsText
-        out_mxd = set_out_mxds(parameters[1].valueAsText)
-        out_db = parameters[2].valueAsText.encode('utf-8')
-        out_db_type = get_out_db_type(parameters[2].valueAsText)
-        out_prefix = parameters[3].valueAsText.encode('utf-8')
-        workspace = parameters[4].valueAsText
-        process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, out_prefix)
+        def main():
+            in_mxds = parameters[0]
+            out_mxd = set_out_mxds(parameters[1].valueAsText)
+            out_db = parameters[2].valueAsText.encode('utf-8')
+            out_db_type = get_out_db_type(parameters[2].valueAsText)
+            out_prefix = parameters[3].valueAsText.encode('utf-8')
+            workspace = parameters[4].valueAsText
+            process_in_mxds(in_mxds, workspace, out_mxd, out_db, out_db_type, out_prefix)
 
+
+        main()
 
 def get_out_db_type(out_db):
     if out_db.endswith('.sde'):
